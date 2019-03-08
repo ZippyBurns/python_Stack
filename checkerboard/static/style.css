@@ -1,0 +1,13 @@
+
+table tr td{
+    height: 40px;
+    width: 40px;
+}
+
+.sq1{
+    background-color: red;
+}
+
+.sq2{
+    background-color: black;
+}

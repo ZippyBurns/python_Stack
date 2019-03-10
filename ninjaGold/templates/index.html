@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="gold">
+            <h4>Your Gold: {{session['money']}}</h4>
+            
+        </div>
+        <div class="building">
+            <h2>Farm</h2>
+            <img class="img" src="../static/farm.jpeg" alt="farm">
+            <p class='goldinfo'>(earns 10-20 gold)</p>
+            <form action="/process_money" method="POST">
+                <input type="hidden" name="building" value="farm">
+                <input class="button" type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="building">
+            <h2>Cave</h2>
+            <img class="img" src="../static/cave.png" alt="cave">
+            <p class='goldinfo'>(earns 5-10 gold)</p>
+             <form action="/process_money" method="POST">
+                <input type="hidden" name="building" value="cave">
+                <input class="button" type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="building">
+            <h2>House</h2>
+            <img class=img src="../static/house.png" alt="house">
+            <p class='goldinfo'>(earns 2-5 gold)</p>
+            <form action="/process_money" method="POST">
+                <input type="hidden" name="building" value="house">
+                <input class="button" type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="building">
+            <h2>Casino</h2>
+            <img class="img" src="../static/Casino.jpeg" alt="casino">
+            <p class='goldinfo'>(earns/takes 0-50 gold)</p>
+            <form action="/process_money" method="POST">
+                <input type="hidden" name="building" value="casino">
+                <input class="button" type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div id="bottom">
+            <h3>Activites:</h3>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+body{
+    background-color:chocolate;
+}
+
+#gold h4{
+    vertical-align: top;
+    display: inline-block;
+    vertical-align: top;
+    color: gold;
+}
+
+.building{
+    display: inline-block;
+    margin: 30px;
+    text-align: center;
+    vertical-align: top;
+    border: 5px solid silver;
+    padding: 25px;
+    background-color: maroon;
+}
+
+.img{
+    height: 200px;
+    width: 200px;
+}
+
+h2{
+    color: olive;
+}
+
+.goldinfo{
+    color: gold;
+    font-style: italic
+}
+
+.button{
+    color: white;
+    background-color: black;
+    font-style: italic;
+    font-size: .8em;
+    width: 45%;
+    height: 30px;
+}
+
+textarea{
+    margin: 25px;
+}
+
+#bottom{
+    width: 90%;
+    height: 500px;
+    border: 2px dotted forestgreen;
+    margin: 0px auto;
+}

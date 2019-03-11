@@ -1,0 +1,14 @@
+<h1>All the Pets</h1>
+{% for my_pet in all_pets %}
+<p>ID: {{my_pet["id"]}}</p>
+<p>Name: {{my_pet["name"]}}</p>
+<p>Type: {{my_pet["type"]}}</p>
+<hr>
+{% endfor %}
+
+<h1>Add a Pet!</h1>
+<form action="/create_pet" method="POST">
+    <p>Name: <input type="text" name="pname"> </p>
+    <p>Type: <input type="text" name="ptype"> </p>
+    <input type="submit" value="Add Pet">
+</form>

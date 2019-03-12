@@ -1,0 +1,12 @@
+<h1>User</h1>
+<a href="/">Home</a>
+{% for user in all_users%}
+<p>First Name {{user["first_name"]}}</p>
+<p>Last Name {{user["last_name"]}}</p>
+<p>Email {{user["email"]}}</p>
+<p>Created at {{user["created_at"]}}</p>
+<p>Last Updated at {{user["updated_at "]}}</p>
+{% endfor %}
+
+<a href="/users/{{all_users[0]['id']}}/edit">Edit</a>
+<a href="/users/{{all_users[0]['id']}}/delete">Delete</a>

@@ -1,20 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<h1>Dojo Survey</h1>
+{% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="../static/normalize.css">
-    <link rel="stylesheet" type="text/css" href="../static/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1>Justin's Survey</h1>
-<h3>Complete the form below</h3>
-    <form action='/result' method='post'>
-    Name: <input type="text" name='name'>
-    <input type='submit' value='result'>
-    </form>
-</body>
-</html>
+<form action="/survey" method="POST">
+<p>First Name <input type="text" name="fname"></p>
+<p>Last Name <input type="text" name="lname"></p>
+<p>Location 
+    <select name="loc">
+        <option value="Berkely"> Berkely </option>
+        <option value="San Jose"> San Jose </option>
+        <option value="Chicago"> Chicago </option>
+    </select>
+</p>
+<p>Favorite Language
+    <select name="fav">
+        <option value="JavaScript">JavaScript</option>
+        <option value="Python">Python</option>
+        <option value="Ruby On Rails">Ruby On Rails</option>
+    </select>
+    </p>
+    <p>Comments: <input type="text" name="comment"></p>
+<input type="submit" value="View Results">
+</form>

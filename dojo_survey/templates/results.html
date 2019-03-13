@@ -1,0 +1,10 @@
+<h1> Here are the results</h1>
+{% for student in all_students%}
+<p> First Name: {{student["first_name"]}}</p>
+<p> Last Name: {{student["last_name"]}}</p>
+<p> Location: {{student["location"]}}</p>
+<p> Favorite Language: {{student["fav_lang"]}}</p>
+<p> Comment: {{student["comment"]}}</p>
+{% endfor %}
+
+<a href="/">Go Back</a>

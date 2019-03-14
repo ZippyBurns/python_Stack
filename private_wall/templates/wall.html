@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% for user in current_user %}
+        <h4 class="float-left">Welcome, {{user["full_name"]}}</h4>
+        {% endfor %}
+        <a class="" href="/logout"> Logout</a>
+        <div class="d-inline-block">
+            {% for user in all_users %}
+            <p>Send a message to: {{user["full_name"]}}</p>
+            <form action="/send_message" method="POST">
+                <textarea name="message"></textarea>
+                <input type="hidden" name="receiver_id" value={{user.id}}>
+                <input type="submit" value="send">
+            </form>
+            {% endfor %}
+        </div>
+        <div class="float-right">
+            {% for message in all_messages %}
+            <p>Message From {{message["full_name"]}}</p>
+            
+            <p>{{message["content"]}}</p>
+            <a href="/delete/{{message['id']}}"><img  src="#" class=""></a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+* {
+    /* border: 1px green dotted; */
+}
+body{
+    background-image: url("../../static/hotspring/HotSpringsBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    position: relative;
+    /* overflow: hidden;    */
+    min-height: 1200px;
+    width: 100%;
+}
+
+a{
+    color:crimson;
+}
+a:hover{
+    color: blue;
+}
+
+a:visited{
+    color: brown;
+}
+.error{
+    color: red;
+    font-style: italic;
+}
+
+.success{
+    color: green;
+    font-style: italic;
+}
+
+input{
+    width: 150px;
+    float: right;
+}
+#registration{
+    border: 2px solid goldenrod;
+    display: inline-block;
+    padding: 25px;
+    margin: 100px;
+    border-radius: 10px;
+    color:beige;
+    font-family: 'Oswald', sans-serif;
+}
+
+#login{
+    border: 2px solid goldenrod;
+    display: inline-block;
+    padding: 25px;
+    margin: 100px;
+    border-radius: 10px;
+    vertical-align: top;
+    font-family: 'Oswald', sans-serif;
+    color: beige;
+}
+
+.home_location{
+    display: inline-block;
+    padding: 20px;
+    margin-left: 25px;
+}
+
+.location{
+    padding: 25px;
+    color: beige;
+
+}
+
+header {
+    color: brown;
+    background-color: burlywood;
+    opacity: 0.8;
+    margin: 0px
+}
+
+.header {
+    text-align:  center;
+    color: brown;
+    background-color: burlywood;
+    font-family: 'Oswald', sans-serif;
+
+}
+
+.nav{
+    color: brown;
+    background-color: burlywood;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* nav-link{
+    color:orange;
+    
+}
+nav-link:visited{
+    color: blue;;
+}
+nav-link:hover{
+    color:pink;
+} */
+
+.banner{
+    align-content: center;
+    
+}
+
+.spring{
+    min-width: 100%;
+    max-height: 200px;
+}
+
+.logged_in{
+    display: inline-block;
+    position: absolute;
+    margin-left: 80%;
+    color: brown;
+    font-size: 14px;
+    font-family: 'Oswald', sans-serif;
+    
+}
+
+.spring{
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+.news{
+    display: inline-block;
+    width: 95%;
+    height: 200px;
+    border: 1px dodgerblue dotted;
+    margin: 60px;
+    margin-top: 95px;
+    background-color: beige;
+    
+}
+
+.news_spring{
+    max-width: 70%;
+    max-height: 70%;
+    vertical-align: top;
+    
+
+}
+
+.news_content{
+    display: inline-block;
+    width: 60%;
+    vertical-align: top;
+    padding: 5px;
+    
+}
+
+#map{
+    height: 100%;
+}
+
+.home_info{
+    color: beige;
+}
+
+th{
+    width: 30%;
+}
+
+#map_holder{
+    margin: 50px;
+    width: 900px;
+    height: 700px;
+}
+
+.button{
+    Margin-right: 150px;
+    width: 50px;
+}
+
+.about{
+    margin: 50px;
+}
+#me{
+    border: 5px forestgreen solid;
+    width: 500px;
+    height: 400px;
+    margin: 0px 50px 50px 50px;
+}
+
+.me_content{
+    max-width: 700px;
+    padding: 25px;
+    margin: 0;
+    background-color: beige;
+    font-family: 'Oswald', sans-serif;
+    margin: 0px auto;
+}
+
+
+.textarea{
+    width: 400px;
+    height: 250px;
+}

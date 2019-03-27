@@ -1,0 +1,8 @@
+<link rel="stylesheet" type="text/css" href="../../static/hotspring/style.css">
+
+{% if found == True %}
+<p class="error">Email address is already in use</p>
+{% endif %}
+{% if found == False %}
+<p class="success">Email is available</p>
+{% endif %}

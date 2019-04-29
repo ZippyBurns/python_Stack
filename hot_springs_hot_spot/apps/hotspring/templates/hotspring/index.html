@@ -9,8 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     {% load static %}
-    <script src="{% static 'registration/validation.js' %}"></script>
+    <script src="{% static 'hotspring/validation.js' %}"></script>
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
 </head>
 <header>
     <h1 class="header">Welcome to Hot Springs Hot Spot!</h1>
@@ -24,23 +25,23 @@
         <ul class="messages">
             {% for message in messages %}
             <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                {% endfor %}
+            {% endfor %}
         </ul>
         {% endif %}
         <form action="/" method="POST">
             {% csrf_token%}
-        <p>First Name: <input type="text" name="fname"></p>
-        <p>Last Name: <input type="text" name="lname"></p>
-        <form action="/" method="post" id="regForm">
-            {% csrf_token %}
-            <div id="usernameMsg"></div>
-            <p>E-mail: <input id="email" type="text" name="email"></p>
-            <p>Password: <input type="password" name="pword"></p>
-            <p>Confirm Password: <input type="password" name="pwordconf"></p>
-            <p>I agree to the <a href="#">Terms & Conditions</a> <input type="checkbox" name="tc" value="tc"></p>
-            <input type="submit" value="Register">
-            <input type="hidden" value="my_val" , name="my_val">
-        </form>
+            <p>First Name: <input type="text" name="fname"></p>
+            <p>Last Name: <input type="text" name="lname"></p>
+            <form action="/" method="post" id="regForm">
+                {% csrf_token %}
+                <div id="usernameMsg"></div>
+                <p>E-mail: <input id="email" type="text" name="email"></p>
+                <p>Password: <input type="password" name="pword"></p>
+                <p>Confirm Password: <input type="password" name="pwordconf"></p>
+                <p>I agree to the <a href="#">Terms & Conditions</a> <input type="checkbox" name="tc" value="tc"></p>
+                <input type="submit" value="Register">
+                <input type="hidden" value="id" , name="id">
+            </form>
     </div>
     <div id="login">
         <p>Welcome Back!</p>

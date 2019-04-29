@@ -203,3 +203,39 @@ th{
     width: 400px;
     height: 250px;
 }
+
+.view_content{
+    font-family: 'Oswald', sans-serif;
+    color: beige;
+}
+
+.view_div{
+    align-content: center;
+    margin: 100px;
+}
+
+.label{
+    font-family: 'Oswald', sans-serif;
+    color: beige;
+    
+}
+
+.social{
+    font-family: 'Oswald', sans-serif;
+    color: beige;
+    
+}
+
+.messages_head{
+    font-family: 'Oswald', sans-serif;
+    color: coral;
+}
+
+.messages{
+    font-family: 'Oswald', sans-serif;
+    color: beige;
+}
+
+.message_div{
+    background-color: beige;
+}

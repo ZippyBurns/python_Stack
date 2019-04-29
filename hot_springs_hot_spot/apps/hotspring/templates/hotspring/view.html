@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/hotspring/style.css">
+    <script src="https://ajax.googleapis.com/ajax/pbs/jquery/3.3.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <script src="{% static 'registration/vapdation.js' %}"></script>
+    <pnk href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var city = $('#city').html();
+                console.log(city, state , "**!*!*!*!*!*!**!*!")
+                $.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0f508ba0bda4f2abaf1dc3ab937fb785`, function (res) {
+                    console.log(res); ''
+                    $('#temperature').html (Math.floor((res.main.temp - 273.15) * (9/5) + 32))
+                    $('#conditions').html(res.weather[0].description)
+                    $('#message').show()
+                })
+            })
+            
+        </script>
+</head>
+<header>
+
+    <h1 class="header">Details</h1>
+    <p class="logged_in">Logged in as {{first.name}} <a href="/logout">Logout</a></p>
+    <nav class=" nav">
+        <a class="nav-link" href="/home">Home</a>
+        <a class="nav-link" href="/find">Discover</a>
+        <a class="nav-link" href="/community">Community</a>
+        <a class="nav-link" href="/news">News</a>
+        <a class="nav-link" href="/about_me">About</a>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <h4><a href="/community">Back</a></h4>
+    <div class="container" class="view_div">
+        <h1 class="view_content">{{hotspring.name}}</h1>
+        <p class="view_content">City: <span id="city">{{hotspring.city}}</span></p>
+        <p class="view_content">State: <span id="state">{{hotspring.state}}</span></p>
+        <p class="view_content">Country: {{hotspring.country}}</p>
+        <p class="view_content">Comments: {{hotspring.comment}}</p>
+        <p class="view_content">Weather: <span id="temperature"></span> <span id="conditions"></span></p>
+        <p class="view_content"><a href="/edit/{{hotspring.id}}">Edit | </a><a
+                href="/delete/{{hotspring.id}}">Delete</a>
+    </div>
+    <!-- <div class="container">
+        <div class="form-group">
+            <input class="form-control" id="input" type="text" value="Get Weather" placeholder="City, State">
+            <div class="form-group">
+                <button class="btn btn-info">Get Weather</button>
+            </div>
+
+        </div>
+        <div id="info">
+            <h1 id="city">City: <span></span></h1>
+            <h2>Temperature: <span id="temperature">...</span></h2>
+            <p>Conditions: <span id="conditions">...</span></p>
+        </div> -->
+</body>
+
+</html>

@@ -12,4 +12,11 @@ urlpatterns=[
     url(r'^community$', views.community),
     url(r'^news$', views.news),
     url(r'^about_me$', views.about_me),
+    url(r'^view/(?P<my_val>\d+)$', views.view),
+    url(r'^edit/(?P<my_val>\d+)$', views.edit),
+    url(r'^delete/(?P<my_val>\d+)$', views.delete),
+    url(r'^send_message$', views.send_message),
+    url(r'^send_comment$', views.send_comment),
+    url(r'^delete_message/(?P<my_val>\d+)$', views.delete_message),
+    url(r'^delete_comment/(?P<my_val>\d+)$', views.delete_comment),
 ]

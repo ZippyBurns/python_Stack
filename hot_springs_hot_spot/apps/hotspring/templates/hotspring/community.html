@@ -10,9 +10,21 @@
     <link rel="stylesheet" type="text/css" href="../../static/hotspring/style.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var city = $('#city').html();
+            $.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0f508ba0bda4f2abaf1dc3ab937fb785`, function (res) {
+                console.log(res); ''
+                $('#temperature').html(Math.floor((res.main.temp - 273.15) * (9/5) + 32))
+                $('#conditions').html(res.weather[0].description)
+                $('#message').show()
+            })
+        })         
+    </script>
 </head>
 <header>
-    <h1 class="header">Recently Updated</h1>
+    <h1 class="header">Community</h1>
     <p class="logged_in">Logged in as {{first.name}} <a href="/logout">Logout</a></p>
     <nav class=" nav">
         <a class="nav-link" href="/home">Home</a>
@@ -25,63 +37,76 @@
 </header>
 
 <body>
-    <div></div>  
+    <div></div>
     <table class="table table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Hot Springs</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Weather</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Harbin Hot Springs</td>
-                        <td>Napa California</td>
-                        <td>USA</td>
-                        <td>46 cloudy</td>
-                        <td><a href="#">View</a></td>
-                    </tr>
+        <thead>
+            <tr>
+                <th scope="col-md-2">Hot Springs</th>
+                <th scope="col-md-2">City</th>
+                <th scope="col-md-2">State</th>
+                <th scope="col-md-2">Country</th>
+                <th scope="col-md-2">Last Updated</th>
+                <th scope="col-md-2">Weather</th>
+            </tr>
+        </thead>
+        {% for hotspring in all_hotsprings  %}
 
-                </tbody>
-            </table>
+        <tbody>
+            <tr>
 
+                <td class="col-md-2">{{hotspring.name}}</td>
+                <td class="col-md-2"><span id="city">{{hotspring.city}}</span></td>
+                <td class="col-md-2">{{hotspring.state}}</td>
+                <td class="col-md-2">{{hotspring.country}}</td>
+                <td class="col-md-2">{{hotspring.updated_at}}</td>
+                <td class="col-md-2"><span id="temperature"></span> <span id="conditions"></span></td>
+                <td><a href="/view/{{hotspring.id}}">View</a></td>
 
-
-
-    <form action="send_message" method="POST">
-        {%csrf_token%}
-        <h3>Post a Message:</h3>
-        <input type="text" name="message">
-        <input type="submit" value="Send Message">
-    </form>
-
-    <div>
-        {% for message in all_messages %}
-        <h5>Message from {{message.user.first_name}}</h5>
-        <p>{{message.message}}</p>
-        <a href="delete_message/{{message.id}}">Delete Message</a>
-        <form action="send_comment" method="POST">
-            {%csrf_token%}
-            <h4>Post a Comment:</h4>
-            <input type="text" name="comment">
-            <input type="hidden" name="message_id" value="{{message.id}}">
-            <input type="submit" value="Post Comment">
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <div class="container">
+        <h3 class="messages_head">Messages</h3>
+        <form action="/send_message" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="label" for="message">Send a Message:</label>
+                <textarea class="form-control" rows="2" placeholder="Type here..." name="message"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="hidden" value="{{message.id}}">
+                <input class="btn btn-primary" type="submit" value="Send Message">
         </form>
+    </div>
+    <div class="container">
+        <d {% for message in all_messages %} <h5 class="messages_head">Message from {{message.user.first_name}}</h5>
+            <p class="messages">{{message.message}}</p>
+            <a href="delete_message/{{message.id}}">'Delete Message'</a>
+            <div class="form-group">
+                <form action="send_comment" method="POST">
+                    {%csrf_token%}
+                    <label class="label" for="comment">Post a Comment:</label>
+                    <textarea class="form-control" rows="2" placeholder="Type here..." name="comment"></textarea>
+            </div>
+            <input type="hidden" name="message_id" value="{{message.id}}">
+            <div class="form-group">
+                <input class="btn btn-success" type="submit" value="Post Comment">
+            </div>
+            </form>
+    </div>
+    <div class="comment_div">
         {% for comment in all_comments %}
         {% if comment.message.id == message.id %}
-        <p>{{comment}}</p>
-        Comment from {{comment.user.first_name}}
-        {{comment.comment}}
-        <a href="delete_comment/{{comment.id}}">Delete Comment</a>
+        <p class="social">{{comment}}</p>
+        <p class="messages_head">Comment from {{comment.user.first_name}}: <span class="social">
+                {{comment.comment}}</span></p>
+        <a href="/delete_comment/{{comment.id}}">Delete Comment</a>
         {% endif %}
         {% endfor %}
         {% endfor %}
-
     </div>
-
-    <div>
-
     </div>
 </body>
+
+</html>

@@ -32,12 +32,14 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    # ManyToMany W/ Hotspring
     objects = UserManager()
+
 
 class Message(models.Model):
     message = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, related_name="messages")
 
 
@@ -47,3 +49,14 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     message= models.ForeignKey(Message, related_name="comments")
     user = models.ForeignKey(User, related_name="comments")
+
+
+class Hotspring(models.Model):
+    name = models.TextField()
+    city = models.TextField()
+    state = models.TextField()
+    country = models.TextField()
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    creator = models.ManyToManyField(User, related_name="hotsprings")

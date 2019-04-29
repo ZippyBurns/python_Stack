@@ -13,7 +13,7 @@
 </head>
 <header>
     <h1 class="header">Find Hot Springs!</h1>
-    <p class="logged_in">Logged in as {{first.name}} <a href="/logout">Logout</a></p>‰
+    <p class="logged_in">Logged in as {{first.name}} <a href="/logout">Logout</a></p>
     <div class=" sidenav">
         <nav class=" nav">
             <a class="nav-link" href="/home">Home</a>
@@ -25,14 +25,18 @@
     </nav>
 </header>
 <div class="container">
-<body>   
-    <div>
-        <h4 class="home_info">Search for Hot Springs <input type="text">
-             <input type="button" value="Search">
-             <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2565269.5295872507!2d-107.21064988959088!3d39.03179240714692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shot+springs!5e1!3m2!1sen!2sus!4v1553641438131" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-            <h6 class="button"><input type="button" value="Add To Community!"></h6>
-</div>
-    <!-- <div id="map"></div>
+
+    <body>
+        <div>
+            <h4 class="home_info">Search for Hot Springs <input type="text">
+                <input type="button" value="Search">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2565269.5295872507!2d-107.21064988959088!3d39.03179240714692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shot+springs!5e1!3m2!1sen!2sus!4v1553641438131"
+                    width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                
+                <h6 class="button"><input type="button" value="Add To my List!"></h6>
+        </div>
+        <!-- <div id="map"></div>
     <script>
         var map;
         function initMap() {
@@ -44,7 +48,39 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGz8EjDqPJO9DJVxoSYij6dH3g_iHyOvc&callback=initMap"
         async defer></script> -->
-    </div>
-</body>
+</div>
+<div class="container">
+        <form type="submit" action="/find" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="social" for="name">Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter hot springs name" name="name">
+            </div>
+            <div class="form-group">
+                <label class="social" for="city">City:</label>
+                <input type="text" class="form-control" id="city" placeholder="City" name="city">
+            </div>
+            <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" class="form-control" id="state" placeholder="State" name="state">
+            <div class="form-group">
+                <label class="social" for="country">Country:</label>
+                <input type="text" class="form-control" id="country" placeholder="Country" name="country">
+            </div>
+            <div class="form-group">
+                <label class="social" for="comment">Comments:</label>
+                <!-- make text area -->
+                <input type="text" class="form-control" rows="3" id="comment" placeholder="Notes...." name="comment">
+            </div>
+            <button type="submit" class="btn btn-success">Add to Community</button>
+            
+        </form>
+        </div>
+
+
+    <a href="/community">Go Back</a>
+
+    </form>
+    </body>
 
 </html>
